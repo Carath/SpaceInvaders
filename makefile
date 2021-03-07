@@ -2,14 +2,11 @@
 # Settings:
 
 # Executable name:
-EXE = spaceinvaders.exe
+EXE_NAME = spaceinvaders
 
 # Source and objects files location:
 SRC_DIR = src
 OBJ_DIR = obj
-
-# Creates the OBJ_DIR directory, if necessary:
-$(shell mkdir -p $(OBJ_DIR))
 
 ##########################################################
 # Libraries:
@@ -35,6 +32,11 @@ LDLIBS = $(GRAPHIC_LINKS) -lm
 ##########################################################
 # Compiling rules:
 
+# Creates the OBJ_DIR directory, if necessary:
+$(shell mkdir -p $(OBJ_DIR))
+
+EXE = $(EXE_NAME).exe
+
 # The following names are not associated with files:
 .PHONY: all clean
 
@@ -53,8 +55,6 @@ $(EXE): $(OBJ)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
-##########################################################
 # Cleaning with 'make clean' the object files:
-
 clean:
 	rm -fv $(EXE) $(OBJ_DIR)/*
