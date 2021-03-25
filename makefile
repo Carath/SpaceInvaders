@@ -35,9 +35,8 @@ LDLIBS := $(GRAPHIC_LINKS) -lm
 # Creates the OBJ_DIR directory, if necessary:
 $(shell mkdir -p $(OBJ_DIR))
 
+# Executable, sources, objects files and dependencies:
 EXE := $(EXE_NAME).exe
-
-# Sources and objects files:
 SRC := $(wildcard $(SRC_DIR)/*.c)
 OBJ := $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 DEP := $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.d)
